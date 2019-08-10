@@ -1,2 +1,2 @@
-First commit to the Jocko robot project!
+Jocko is a tank robot built by Aamir Rasheed. This is the software that powers it.
 
