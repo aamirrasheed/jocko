@@ -1,14 +1,12 @@
 import socket
 import os
-get_rpi_address_cmd = ''
 
-s = socket.socket()
-host = os.system(get_rpi_address_cmd)
-port = get_rpi_port()
-s.bind((host,port))
+import rpi_ip_addr
 
-s.listen(5)
-while True:
-
-
+s = socket.socket(socket.AF_INET, )
+host = rpi_ip_addr.get()
+port = 12345
+s.connect((host,port))
+print(s.recv(1024))
+s.close()
 
