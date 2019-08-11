@@ -1,2 +1,0 @@
-arp -a | grep aamirpi | awk -F '(' '{print $2}' | awk -F ')' '{print $1}'
-

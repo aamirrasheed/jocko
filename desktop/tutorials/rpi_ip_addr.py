@@ -18,6 +18,7 @@ def get():
 
     # clean output
     output = output.decode('utf-8')
+    output = str(output)
     output = output.replace('\n','')
     
     # verify that output is IPv4 address with regex
