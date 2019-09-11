@@ -31,7 +31,7 @@ INPUT_4_B_PIN = OUTPUT_PINS[2]
 
 PWM_FREQ = 1000
 PWM_DUTY_CYCLE_A = 80 # change to modify speed of motor A (0-100)
-PWM_DUTY_CYCLE_B = 100 # change to modify speed of motor B (0-100)
+PWM_DUTY_CYCLE_B = 80  # change to modify speed of motor B (0-100)
 
 ENABLE_PWM = True
 
@@ -39,13 +39,21 @@ ENABLE_PWM = True
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(OUTPUT_PINS, GPIO.OUT) 
 
-# specify Input Pins for motor direction
-# motor A
-GPIO.output(INPUT_1_A_PIN, GPIO.HIGH)
-GPIO.output(INPUT_2_A_PIN, GPIO.LOW)
-# motor B
-GPIO.output(INPUT_3_B_PIN, GPIO.LOW)
-GPIO.output(INPUT_4_B_PIN, GPIO.HIGH)
+def turnleft():
+    # motor A
+    GPIO.output(INPUT_1_A_PIN, GPIO.HIGH)
+    GPIO.output(INPUT_2_A_PIN, GPIO.LOW)
+    # motor B
+    GPIO.output(INPUT_3_B_PIN, GPIO.LOW)
+    GPIO.output(INPUT_4_B_PIN, GPIO.HIGH)
+
+def turnright():
+    # motor A
+    GPIO.output(INPUT_1_A_PIN, GPIO.LOW)
+    GPIO.output(INPUT_2_A_PIN, GPIO.HIGH)
+    # motor B
+    GPIO.output(INPUT_3_B_PIN, GPIO.HIGH)
+    GPIO.output(INPUT_4_B_PIN, GPIO.LOW)
 
 # specify PWM
 if(ENABLE_PWM):
@@ -59,6 +67,9 @@ else:
 
 
 # loop while waiting for entry from user
+turnleft()
+input("Press Enter to turn right")
+turnright()
 input("Press Enter to stop")
 
 # close out pins
